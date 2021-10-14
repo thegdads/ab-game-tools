@@ -3,7 +3,8 @@ version = 1
 exclude_patterns = [
   "src/service-worker.ts",
   "src/serviceWorkerRegistration.ts",
-  "src/reportWebVitals.ts"
+  "src/reportWebVitals.ts",
+  "src/setupTests.ts"
 ]
 
 [[analyzers]]
