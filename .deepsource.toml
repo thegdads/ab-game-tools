@@ -1,5 +1,10 @@
 version = 1
 
+exclude_patterns = [
+  "src/service-worker.ts",
+  "src/serviceWorkerRegistration.ts"
+]
+
 [[analyzers]]
 name = "javascript"
 enabled = true
