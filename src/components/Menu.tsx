@@ -46,25 +46,31 @@ const appPages: AppPage[] = [
   }
 ];
 
-const Menu: React.FC = () => {
+const MenuList: React.FC = () => {
   const location = useLocation();
+  return (
+    <IonList id="inbox-list">
+      <IonListHeader>Albion p2p market</IonListHeader>
+      {appPages.map((appPage) => {
+        return (
+          <IonMenuToggle key={appPage.id} autoHide={false}>
+            <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
+              <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
+              <IonLabel>{appPage.title}</IonLabel>
+            </IonItem>
+          </IonMenuToggle>
+        );
+      })}
+    </IonList>
+  )
+}
+
+const Menu: React.FC = () => {
 
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
-        <IonList id="inbox-list">
-          <IonListHeader>Albion p2p market</IonListHeader>
-          {appPages.map((appPage) => {
-            return (
-              <IonMenuToggle key={appPage.id} autoHide={false}>
-                <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
-                  <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
-                  <IonLabel>{appPage.title}</IonLabel>
-                </IonItem>
-              </IonMenuToggle>
-            );
-          })}
-        </IonList>
+        <MenuList />
       </IonContent>
     </IonMenu>
   );
