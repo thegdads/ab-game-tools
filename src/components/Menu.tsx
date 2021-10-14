@@ -15,6 +15,7 @@ import { pricetagSharp, planetSharp, businessSharp } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
+  id: string;
   url: string;
   iosIcon: string;
   mdIcon: string;
@@ -23,18 +24,21 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
+    id: 'home',
     title: 'Home',
     url: '/page/Home',
     iosIcon: planetSharp,
     mdIcon: planetSharp
   },
   {
+    id: 'cities',
     title: 'Cities',
     url: '/page/Cities',
     iosIcon: businessSharp,
     mdIcon: businessSharp
   },
   {
+    id: 'items',
     title: 'Items',
     url: '/page/Items',
     iosIcon: pricetagSharp,
@@ -50,9 +54,9 @@ const Menu: React.FC = () => {
       <IonContent>
         <IonList id="inbox-list">
           <IonListHeader>Albion p2p market</IonListHeader>
-          {appPages.map((appPage, index) => {
+          {appPages.map((appPage) => {
             return (
-              <IonMenuToggle key={index} autoHide={false}>
+              <IonMenuToggle key={appPage.id} autoHide={false}>
                 <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
                   <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
                   <IonLabel>{appPage.title}</IonLabel>
